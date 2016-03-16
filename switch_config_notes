@@ -1,0 +1,5 @@
+curl -X POST -d '{"switch": "00:01:90:b1:1c:f4:af:fe", "name":"flow-mod-1", "cookie":"0", "priority":"32768", "in_port":"11","active":"true", "actions":"output=41"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+
+curl -X POST -d '{"switch": "00:01:90:b1:1c:f4:af:fe", "name":"flow-mod-2", "cookie":"0", "priority":"32768", "in_port":"41","active":"true", "actions":"output=27"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+
+curl -X POST -d '{"switch": "00:01:90:b1:1c:f4:af:fe", "name":"flow-mod-3", "cookie":"0", "priority":"32768", "in_port":"27","active":"true", "actions":"output=11"}' http://155.98.37.39:8080/wm/staticflowpusher/json

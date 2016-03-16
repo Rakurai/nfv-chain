@@ -1,0 +1,11 @@
+vm config steps
+
+
+#networking
+#add
+nameserver 130.127.132.51
+search clemson.cloudlab.us
+#to /etc/resolve.conf and /etc/resolvconf/resolv.conf.d/tail
+
+#and
+sudo ip route add default via 10.10.2.254
