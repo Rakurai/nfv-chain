@@ -1,4 +1,12 @@
-curl -X POST -d '{"switch": "00:01:90:b1:1c:f4:af:fe", "name":"flow-mod-1", "cookie":"0", "priority":"32768", "in_port":"11","active":"true", "actions":"output=41"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+#by mac address
+
+curl -X POST -d '{"switch": "00:02:90:b1:1c:f5:0d:01", "name":"to-ip-1", "cookie":"0", "priority":"32768", "eth_dst":"00:8c:fa:5b:08:7c","active":"true", "actions":"output=82"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+
+curl -X POST -d '{"switch": "00:02:90:b1:1c:f5:0d:01", "name":"to-ip-2", "cookie":"0", "priority":"32768", "eth_dst":"00:8c:fa:5b:0a:a6","active":"true", "actions":"output=108"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+
+curl -X POST -d '{"switch": "00:02:90:b1:1c:f5:0d:01", "name":"to-ip-4", "cookie":"0", "priority":"32768", "eth_dst":"ce:f1:ea:cc:da:38","active":"true", "actions":"output=105"}' http://155.98.37.39:8080/wm/staticflowpusher/json
+
+# by inport
 
 curl -X POST -d '{"switch": "00:01:90:b1:1c:f4:af:fe", "name":"flow-mod-2", "cookie":"0", "priority":"32768", "in_port":"41","active":"true", "actions":"output=27"}' http://155.98.37.39:8080/wm/staticflowpusher/json
 

@@ -8,7 +8,9 @@ local log		= require "log"
 local limiter	= require "ratelimiter"
 
 local PKT_SIZE	= 60
-local ETH_DST	= "11:12:13:14:15:16"
+local IP_SRC	= "10.10.1.1"
+local IP_DST	= "10.10.1.2"
+local ETH_DST	= "ce:f1:ea:cc:da:38"
 
 function master(txPort, rate, rc, pattern, threads)
 	if not txPort or not rate or not rc or (pattern ~= "cbr" and pattern ~= "poisson") then
@@ -33,10 +35,13 @@ end
 
 function loadSlave(queue, txDev, rate, rc, pattern, rateLimiter, threadId, numThreads)
 	local mem = memory.createMemPool(4096, function(buf)
-		buf:getEthernetPacket():fill{
+		buf:getUdpPacket():fill{
 			ethSrc = txDev,
 			ethDst = ETH_DST,
-			ethType = 0x1234
+			ipSrc = IP_SRC,
+			ipDst = IP_DST,
+			udpSrc = 1234,
+			udpDst = 1234
 		}
 	end)
 	local txCtr
