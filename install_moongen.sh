@@ -2,7 +2,7 @@ git clone http://github.com/emmericp/moongen moongen
 cd moongen
 git submodule update --init
 sudo apt-get update
-sudo apt-get install cmake
+sudo apt-get install -y cmake
 
 sudo ./build.sh
 sudo ./setup-hugetlbfs.sh
@@ -11,9 +11,9 @@ sudo ./setup-hugetlbfs.sh
 bound=`deps/dpdk/tools/dpdk_nic_bind.py --status | grep drv=igb_uio | awk '{print $1}'`
 sudo deps/dpdk/tools/dpdk_nic_bind.py -u $bound
 
-iface=`ifconfig | grep 00:8c:fa | awk '{print $1}'`
-sudo ifconfig $iface down
-sudo deps/dpdk/tools/dpdk_nic_bind.py --bind=igb_uio $iface
+#iface=`ifconfig | grep 00:8c:fa | awk '{print $1}'`
+#sudo ifconfig $iface down
+sudo deps/dpdk/tools/dpdk_nic_bind.py --bind=igb_uio 82:00.0
 
 #dev_name=`ethtool -i $iface | grep bus-info | awk '{print $2}'`
 #sudo deps/dpdk/tools/dpdk_nic_bind.py -u $dev_name
